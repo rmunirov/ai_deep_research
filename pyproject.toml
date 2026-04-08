@@ -1,0 +1,75 @@
+[project]
+name = "deep-research"
+version = "0.1.0"
+description = "AI agent for multi-step research on any topic via CLI and API"
+readme = "README.md"
+authors = [
+    { name = "Munirov RR", email = "munirov.rr@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "deepagents",
+    "langchain",
+    "langgraph",
+    "langgraph-checkpoint-postgres",
+    "fastapi",
+    "uvicorn[standard]",
+    "typer",
+    "rich",
+    "pydantic>=2.0",
+    "pydantic-settings",
+    "sqlalchemy[asyncio]",
+    "asyncpg",
+    "alembic",
+    "httpx",
+    "beautifulsoup4",
+    "tavily-python",
+    "arxiv",
+    "wikipedia-api",
+    "pyyaml",
+    "sse-starlette",
+    "langchain-openai>=1.1.12",
+]
+
+[project.scripts]
+research = "deep_research.cli.app:app"
+
+[build-system]
+requires = ["uv_build>=0.9.28,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "mypy",
+    "ruff",
+    "types-pyyaml",
+    "types-beautifulsoup4",
+]
+
+[tool.mypy]
+strict = true
+python_version = "3.11"
+plugins = ["pydantic.mypy"]
+disallow_untyped_defs = true
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM"]
+ignore = ["B008"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

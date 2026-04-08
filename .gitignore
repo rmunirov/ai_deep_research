@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# IDE
+.idea/
+.vscode/
+.cursor/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# mypy
+.mypy_cache/
+
+# pytest
+.pytest_cache/
+
+# Research artifacts
+researches/
+
+# Alembic
+alembic/versions/__pycache__/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Agent internals
+thoughts/
